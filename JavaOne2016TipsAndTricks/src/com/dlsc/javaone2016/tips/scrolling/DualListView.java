@@ -27,8 +27,12 @@ public class DualListView extends HBox {
 			listViewB.getItems().add("Right Item #" + i);
 		}
 
+		listViewA.getStyleClass().add("left-list-view");
+		
 		listViewA.skinProperty().addListener(it -> bindScrollBars());
 		listViewB.skinProperty().addListener(it -> bindScrollBars());
+		
+		getStylesheets().add(DualListView.class.getResource("scroll.css").toExternalForm());
 	}
 
 	private Optional<ScrollBar> findScrollBar(Parent parent) {
@@ -51,7 +55,7 @@ public class DualListView extends HBox {
 			Bindings.bindBidirectional(barA.blockIncrementProperty(), barB.blockIncrementProperty());
 			Bindings.bindBidirectional(barA.unitIncrementProperty(), barB.unitIncrementProperty());
 			Bindings.bindBidirectional(barA.minProperty(), barB.minProperty());
-			Bindings.bindBidirectional(barA.maxProperty(), barB.maxProperty());
+			Bindings.bindBidirectional(barA.maxProperty(), barB.maxProperty());			
 		}
 	}
 }
