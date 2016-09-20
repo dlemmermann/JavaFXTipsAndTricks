@@ -32,8 +32,10 @@ public class DualListView extends HBox {
 	}
 
 	private Optional<ScrollBar> findScrollBar(Parent parent) {
-		return parent.lookupAll("VirtualScrollBar").stream().map(node -> (ScrollBar) node)
-				.filter(scrollBar -> scrollBar.getOrientation().equals(Orientation.VERTICAL)).findFirst();
+		return parent.lookupAll("VirtualScrollBar")
+				.stream().map(node -> (ScrollBar) node)
+				.filter(bar -> bar.getOrientation().equals(Orientation.VERTICAL))
+				.findFirst();
 	}
 
 	private void bindScrollBars() {
